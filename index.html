@@ -6,7 +6,6 @@
     <title>R & R | Our Story</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,27 +14,20 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="font-sans text-slate-800">
-
     <div class="aurora-bg"></div>
     <div class="hearts-container" id="hearts"></div>
-
     <main class="max-w-3xl mx-auto px-6 py-12 md:py-20">
-
         <header class="text-center mb-24 relative animate-fade-in">
             <div class="inline-block relative">
                 <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl mx-auto mb-8 relative z-10">
-                    <img src="assets/main.JPG" 
-                         alt="Couple" class="w-full h-full object-cover">
+                    <img src="assets/main.JPG" alt="Couple" class="w-full h-full object-cover">
                 </div>
                 <div class="absolute inset-0 border border-rose-300 rounded-full scale-110 z-0 animate-pulse"></div>
             </div>
-
             <h1 class="font-serif text-5xl md:text-7xl font-bold text-slate-900 mb-4 tracking-tight">
                 Rahul <span class="text-rose-400">&</span> Rachel
             </h1>
-            
             <p class="text-rose-900/60 font-medium text-lg tracking-widest uppercase mb-8">The Story of Us</p>
-
             <div class="glass-card inline-flex items-center gap-6 px-8 py-4 rounded-full">
                 <div class="text-center">
                     <span id="days-count" class="block font-serif text-3xl font-bold text-rose-500">0</span>
@@ -53,7 +45,6 @@
                 </div>
             </div>
         </header>
-
         <section class="mb-20">
             <div class="flex justify-between items-end mb-8">
                 <h2 class="font-serif text-3xl text-slate-800">Our Notes</h2>
@@ -61,7 +52,6 @@
                     <i class="fa-solid fa-plus mr-2"></i> New Note
                 </button>
             </div>
-
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass-card p-6 rounded-3xl hover:-translate-y-1 transition duration-300 relative group">
                     <div class="edit-controls absolute top-4 right-4 gap-2">
@@ -76,7 +66,6 @@
                         <i class="fa-regular fa-calendar"></i> <span class="editable">Nov 04, 2025</span>
                     </div>
                 </div>
-
                 <div class="glass-card p-6 rounded-3xl hover:-translate-y-1 transition duration-300 relative">
                     <div class="edit-controls absolute top-4 right-4 gap-2">
                         <button class="text-slate-400 hover:text-rose-500"><i class="fa-solid fa-pen"></i></button>
@@ -92,7 +81,6 @@
                 </div>
             </div>
         </section>
-
         <section>
             <h2 class="font-serif text-3xl text-slate-800 mb-8 text-center">Our Timeline</h2>
             <div class="relative border-l-2 border-rose-200 ml-6 space-y-12 pb-12">
@@ -103,26 +91,21 @@
                     <h3 class="font-serif text-2xl text-slate-800 editable">Became official</h3>
                     <p class="text-slate-500 mt-2 editable">We decided to become boyfriend and girlfriend.</p>
                 </div>
-
                 <div class="relative pl-8 group">
                     <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-white border-4 border-rose-300 group-hover:scale-125 transition"></div>
                     <span class="text-sm text-rose-400 font-bold tracking-wide editable">May 2, 2025</span>
                     <h3 class="font-serif text-2xl text-slate-800 editable">Met each other</h3>
                     <p class="text-slate-500 mt-2 editable">The start of our greatest adventure. Began talking daily.</p>
                 </div>
-
             </div>
         </section>
-
     </main>
-
     <footer class="text-center py-8 text-slate-400 text-sm">
         <p class="mb-2">Made with <i class="fa-solid fa-heart text-rose-400 animate-bounce"></i> by Rahul</p>
         <button onclick="toggleLogin()" class="hover:text-rose-500 transition p-2">
             <i class="fa-solid fa-lock"></i>
         </button>
     </footer>
-
     <div id="login-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center z-50 opacity-0 transition-opacity duration-300">
         <div class="glass-card p-8 rounded-2xl w-full max-w-sm text-center transform scale-95 transition-transform duration-300" id="login-card">
             <h3 class="font-serif text-2xl mb-2">Couple Login</h3>
@@ -133,16 +116,22 @@
         </div>
     </div>
 
+    <div id="alert-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center z-50 opacity-0 transition-opacity duration-300">
+        <div class="glass-card p-8 rounded-2xl w-full max-w-sm text-center transform scale-95 transition-transform duration-300" id="alert-card">
+            <div class="mb-4">
+                <i id="alert-icon" class="fa-solid fa-heart text-rose-400 text-4xl"></i>
+            </div>
+            <p id="alert-message" class="text-slate-700 leading-relaxed whitespace-pre-line"></p>
+            <button onclick="closeAlert()" class="mt-6 w-full bg-rose-500 text-white rounded-lg py-3 font-semibold hover:bg-rose-600 transition shadow-lg shadow-rose-500/30">Okay</button>
+        </div>
+    </div>
     <script>
         const startDate = new Date(2025, 10, 11);
-
         function updateCounter() {
             const now = new Date();
             const diff = now - startDate;
-            
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
             document.getElementById('days-count').innerText = days;
             document.getElementById('hours-count').innerText = hours;
         }
@@ -163,16 +152,44 @@
             }
         }
         createHearts();
-
-        // 3. MOCK LOGIN LOGIC
         const modal = document.getElementById('login-modal');
         const loginCard = document.getElementById('login-card');
+        const alertModal = document.getElementById('alert-modal');
+        const alertCard = document.getElementById('alert-card');
         const body = document.body;
+
+        function showAlert(message, isSuccess = true) {
+            const alertMessage = document.getElementById('alert-message');
+            const alertIcon = document.getElementById('alert-icon');
+            
+            alertMessage.textContent = message;
+            
+            if (isSuccess) {
+                alertIcon.className = 'fa-solid fa-heart text-rose-400 text-4xl';
+            } else {
+                alertIcon.className = 'fa-solid fa-triangle-exclamation text-rose-500 text-4xl';
+            }
+            
+            alertModal.classList.remove('hidden');
+            setTimeout(() => {
+                alertModal.classList.remove('opacity-0');
+                alertCard.classList.remove('scale-95');
+                alertCard.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeAlert() {
+            alertModal.classList.add('opacity-0');
+            alertCard.classList.remove('scale-100');
+            alertCard.classList.add('scale-95');
+            setTimeout(() => {
+                alertModal.classList.add('hidden');
+            }, 300);
+        }
 
         function toggleLogin() {
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
-                // Small delay to allow display:block to apply before opacity transition
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
                     loginCard.classList.remove('scale-95');
@@ -190,20 +207,17 @@
 
         function checkPassword() {
             const pass = document.getElementById('password-input').value;
-            // Simple check (Not secure, just for visual prototype)
-            // Change 'love' to whatever you want for now
             if(pass === 'love') {
                 toggleLogin();
                 body.classList.add('admin-mode');
                 
-                // Make text editable
                 document.querySelectorAll('.editable').forEach(el => {
                     el.setAttribute('contenteditable', 'true');
                 });
                 
-                alert("Welcome back! You can now click on text to edit it.\n(Note: Without a database, changes won't save on refresh yet!)");
+                showAlert("Welcome back!", true);
             } else {
-                alert("Wrong password!");
+                showAlert("Wrong password!", false);
             }
         }
     </script>
